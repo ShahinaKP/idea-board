@@ -1,0 +1,9 @@
+dist/*
+config/*
+build/*
+webpack.config.js
+env.js
+env.example.js
+
+**/*.spec.js
+**/*.test.js

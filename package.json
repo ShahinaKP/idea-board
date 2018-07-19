@@ -1,41 +1,58 @@
 {
   "name": "idea-board",
-  "version": "1.0.0",
-  "description": "",
-  "main": "webpack.config.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --mode development"
-  },
+  "version": "0.1.0",
+  "main": "index.js",
+  "author": "Shahina KP",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ShahinaKP/idea-board.git"
+    "url": "git+https://github.com/ShahinaKP/idea-board"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ShahinaKP/idea-board/issues"
+  "license": "MIT",
+  "scripts": {
+    "setup": "npm install",
+    "dist": "webpack -p --env.env=prod",
+    "start": "webpack-dev-server --env.env=dev"
   },
-  "homepage": "https://github.com/ShahinaKP/idea-board#readme",
+  "dependencies": {
+    "base-href-webpack-plugin": "^2.0.0",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-grid-layout": "^0.16.6",
+    "react-loadable": "^5.3.1",
+    "react-router-dom": "^4.2.2",
+    "styled-components": "^3.2.5"
+  },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.6",
-    "babel-loader": "^7.1.5",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-plugin-import-inspector": "^2.0.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "css-loader": "^1.0.0",
-    "eslint": "^5.1.0",
-    "eslint-config-airbnb": "^17.0.0",
-    "eslint-loader": "^2.0.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.10.0",
+    "chalk": "^2.3.2",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.4.0",
     "html-webpack-plugin": "^3.2.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "import-inspector": "^2.0.0",
+    "react-hot-loader": "^4.0.1",
     "style-loader": "^0.21.0",
-    "webpack": "^4.16.1",
-    "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.4"
+    "uglifyjs-webpack-plugin": "^1.2.4",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14",
+    "webpack-dev-server": "^3.1.3",
+    "webpack-merge": "^4.1.2",
+    "write-file-webpack-plugin": "^4.2.0"
   }
 }
