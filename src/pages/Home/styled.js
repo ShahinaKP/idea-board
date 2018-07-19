@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Styled = styled.div`
-    width: calc(100% - 20px);
+    width: calc(100% - 10px);
     position: relative;
 
     .react-grid-layout {
@@ -36,17 +36,22 @@ const Styled = styled.div`
         background: #cce;
     }
 
-    .react-grid-item .text {
-        font-size: 24px;
-        text-align: center;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        height: 24px;
+    .react-grid-item .text-title {
+        font-size: 18px;
+        font-weight: 600;
+        text-align: left;
+        margin-top: 20px;
+        display: block;
+        padding: 0 5px;
     }
+
+    .react-grid-item .text-body {
+      font-size: 18px;
+      text-align: left;
+      margin-top: 20px;
+      display: block;
+      padding: 0 5px;
+  }
 
       .react-grid-item .minMax {
         font-size: 12px;

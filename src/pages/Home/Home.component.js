@@ -11,45 +11,76 @@ export default class HomeComp extends React.PureComponent {
     super(props);
 
     this.state = {
-      items: [0, 1, 2, 3, 4].map((i, key, list) => ({
+      ideas:
+        [
+          {
+            title: 'A new cake recipe',
+            body: 'Made of chocolate',
+          },
+          {
+            title: 'A twitter client idea',
+            body: 'Only for replying to mentions and DMs',
+          },
+          {
+            title: 'A novel set in Italy',
+            body: 'A mafia crime drama starring Berlusconi',
+          },
+          {
+            title: 'Card game design',
+            body: 'Like Uno but involves drinking',
+          },
+        ],
+      items: [0, 1, 2, 3].map((i, key, list) => ({
         i: i.toString(),
         x: i * 2,
         y: 0,
         w: 2,
         h: 2,
-        add: i === (list.length - 1).toString()
+        add: i === (list.length - 1).toString(),
+        title: '',
+        body: '',
       })),
-      newCounter: 0
+      newCounter: 0,
     };
+  }
 
-    this.onAddItem = this.onAddItem.bind(this);
-    this.onBreakpointChange = this.onBreakpointChange.bind(this);
+  componentDidMount() {
+    const newItemArr = [...this.state.items];
+    newItemArr.forEach((item, index) => {
+      item.title = this.state.ideas[index].title;
+      item.body = this.state.ideas[index].body;
+    });
+    this.setState({
+      items: [...newItemArr],
+    });
   }
 
   createElement(el) {
     const removeStyle = {
-      position: "absolute",
-      right: "2px",
+      position: 'absolute',
+      right: '2px',
       top: 0,
-      cursor: "pointer"
+      cursor: 'pointer',
     };
-    const i = el.add ? "+" : el.i;
-    
+    const i = el.add ? '+' : el.i;
     return (
       <div key={i} data-grid={el}>
         {el.add ? (
           <span
             className="add text"
             onClick={this.onAddItem}
-            title="You can add an item by clicking here, too."
+            title='You can add an item by clicking here, too.'
           >
             Add +
           </span>
         ) : (
-          <span className="text">{i}</span>
+          <div>
+            <span className="text-title">{el.title}</span>
+            <p className="text-body">{el.body}</p>
+          </div>
         )}
         <span
-          className="remove"
+          className='remove'
           style={removeStyle}
           onClick={this.onRemoveItem.bind(this, i)}
         >
@@ -61,18 +92,18 @@ export default class HomeComp extends React.PureComponent {
 
   onAddItem = () => {
     /*eslint no-console: 0*/
-    console.log("adding", "n" + this.state.newCounter);
+    console.log('adding', 'n' + this.state.newCounter);
     this.setState({
       // Add a new item. It must have a unique key!
       items: this.state.items.concat({
-        i: "n" + this.state.newCounter,
+        i: 'n' + this.state.newCounter,
         x: (this.state.items.length * 2) % (this.state.cols || 12),
         y: Infinity, // puts it at the bottom
         w: 2,
-        h: 2
+        h: 2,
       }),
       // Increment the counter to ensure key is always unique.
-      newCounter: this.state.newCounter + 1
+      newCounter: this.state.newCounter + 1,
     });
   }
 
@@ -80,7 +111,7 @@ export default class HomeComp extends React.PureComponent {
   onBreakpointChange(breakpoint, cols) {
     this.setState({
       breakpoint: breakpoint,
-      cols: cols
+      cols: cols,
     });
   }
 
@@ -89,9 +120,9 @@ export default class HomeComp extends React.PureComponent {
   }
 
   onRemoveItem = (id) => {
-    console.log("removing");
+    console.log('removing');
     this.setState({
-      items: this.state.items.filter(({i}) => i !== id),
+      items: this.state.items.filter(({ i }) => i !== id),
     });
   }
 
@@ -104,7 +135,7 @@ export default class HomeComp extends React.PureComponent {
             onLayoutChange={this.onLayoutChange}
             onBreakpointChange={this.onBreakpointChange}
           >
-            { this.state.items.map((el) => this.createElement(el)) }
+            { this.state.items.map(el => this.createElement(el)) }
           </ResponsiveReactGridLayout>
         </Styled>
       </div>
@@ -118,7 +149,9 @@ HomeComp.propTypes = {
   rowHeight: PropTypes.number,
 };
 HomeComp.defaultProps = {
-  className: "layout",
-  cols: { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 },
-  rowHeight: 100
+  className: 'layout',
+  cols: {
+    lg: 12, md: 10, sm: 6, xs: 4, xxs: 2,
+  },
+  rowHeight: 100,
 };
